@@ -261,7 +261,7 @@ class PizzaFrame extends JFrame {
         System.out.println("LOG: " + message);
     }
 
-    // Overloaded Method #2 
+    // Overloaded Method #2
     private void logAction(String message, int value) {
         System.out.println("LOG: " + message + " | Value: " + value);
     }

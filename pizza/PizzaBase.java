@@ -6,20 +6,20 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 
 class PizzaBase implements Pizza {
-    // 1. STATIC ATTRIBUTE (Checklist Item)
+    // 1. STATIC ATTRIBUTE
     // This belongs to the class, not a specific pizza. It counts ALL pizzas.
     private static int pizzasCreated = 0;
 
     private final BufferedImage img;
     private final int basePrice;
 
-    // 2. OVERLOADED CONSTRUCTOR #1 (Checklist Item)
+    // 2. OVERLOADED CONSTRUCTOR #1
     // Default constructor: assumes price is $5
     public PizzaBase() {
         this(5); // Calls the second constructor
     }
 
-    // 2. OVERLOADED CONSTRUCTOR #2 (Checklist Item)
+    // 2. OVERLOADED CONSTRUCTOR #2
     // Custom constructor: allows setting a different base price
     public PizzaBase(int basePrice) {
         this.basePrice = basePrice;
@@ -32,7 +32,7 @@ class PizzaBase implements Pizza {
         }
     }
 
-    // 3. STATIC METHOD (Checklist Item)
+    // 3. STATIC METHOD
     private static void incrementCount() {
         pizzasCreated++;
         System.out.println("Total Pizzas Created So Far: " + pizzasCreated);
@@ -45,7 +45,7 @@ class PizzaBase implements Pizza {
 
     @Override
     public int getPrice() {
-        return basePrice; // Returns the variable price instead of hardcoded 5
+        return basePrice; // Returns the variable price
     }
 
     @Override
@@ -53,7 +53,7 @@ class PizzaBase implements Pizza {
         return "Tomato Sauce, Cheese";
     }
 
-    // 4. OVERRIDDEN TOSTRING (Checklist Item)
+    // 4. OVERRIDDEN TOSTRING
     @Override
     public String toString() {
         return "Basic Pizza Base ($" + basePrice + ")";

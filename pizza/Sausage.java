@@ -29,7 +29,7 @@ class Sausage extends PizzaIngredient {
     @Override
     public int getPrice() {
         // Set your custom price (Example: +2)
-        return super.getPrice() + 2;
+        return super.getPrice() + 5;
     }
 
     @Override
