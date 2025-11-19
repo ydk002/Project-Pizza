@@ -55,18 +55,42 @@ class PizzaFrame extends JFrame {
     JCheckBoxMenuItem mushroomCheckBox = new JCheckBoxMenuItem("Mushroom");
     JCheckBoxMenuItem tomatoCheckBox = new JCheckBoxMenuItem("Tomato");
     JCheckBoxMenuItem cornCheckBox = new JCheckBoxMenuItem("Corn");
+    JCheckBoxMenuItem pineappleCheckBox = new JCheckBoxMenuItem("Pineapple");
+    JCheckBoxMenuItem chickenCheckBox = new JCheckBoxMenuItem("Chicken");
+    JCheckBoxMenuItem hamCheckBox = new JCheckBoxMenuItem("Ham");
+    JCheckBoxMenuItem greenPepperCheckBox = new JCheckBoxMenuItem("Green Pepper");
+    JCheckBoxMenuItem sausageCheckBox = new JCheckBoxMenuItem("Sausage");
+    JCheckBoxMenuItem extraCheeseCheckBox = new JCheckBoxMenuItem("Extra Cheese");
+    JCheckBoxMenuItem baconCheckBox = new JCheckBoxMenuItem("Bacon");
+    JCheckBoxMenuItem onionCheckBox = new JCheckBoxMenuItem("Onion");
 
     oliveCheckBox.addActionListener(new ToppingMenuItemListener("Olive"));
     salamiCheckBox.addActionListener(new ToppingMenuItemListener("Salami"));
     mushroomCheckBox.addActionListener(new ToppingMenuItemListener("Mushroom"));
     tomatoCheckBox.addActionListener(new ToppingMenuItemListener("Tomato"));
     cornCheckBox.addActionListener(new ToppingMenuItemListener("Corn"));
+    pineappleCheckBox.addActionListener(new ToppingMenuItemListener("Pineapple"));
+    chickenCheckBox.addActionListener(new ToppingMenuItemListener("Chicken"));
+    hamCheckBox.addActionListener(new ToppingMenuItemListener("Ham"));
+    greenPepperCheckBox.addActionListener(new ToppingMenuItemListener("Green Pepper"));
+    sausageCheckBox.addActionListener(new ToppingMenuItemListener("Sausage"));
+    extraCheeseCheckBox.addActionListener(new ToppingMenuItemListener("Extra Cheese"));
+    baconCheckBox.addActionListener(new ToppingMenuItemListener("Bacon"));
+    onionCheckBox.addActionListener(new ToppingMenuItemListener("Onion"));
 
     toppingsMenu.add(oliveCheckBox);
     toppingsMenu.add(salamiCheckBox);
     toppingsMenu.add(mushroomCheckBox);
     toppingsMenu.add(tomatoCheckBox);
     toppingsMenu.add(cornCheckBox);
+    toppingsMenu.add(pineappleCheckBox);
+    toppingsMenu.add(chickenCheckBox);
+    toppingsMenu.add(hamCheckBox);
+    toppingsMenu.add(greenPepperCheckBox);
+    toppingsMenu.add(sausageCheckBox);
+    toppingsMenu.add(extraCheeseCheckBox);
+    toppingsMenu.add(baconCheckBox);
+    toppingsMenu.add(onionCheckBox);
 
     menuBar.add(fileMenu);
     menuBar.add(toppingsMenu);
@@ -178,6 +202,30 @@ class PizzaFrame extends JFrame {
         case "Corn":
           decoratedPizza = new Corn(decoratedPizza);
           break;
+          case "Pineapple":
+              decoratedPizza = new Pineapple(decoratedPizza);
+              break;
+          case "Chicken":
+              decoratedPizza = new Chicken(decoratedPizza);
+              break;
+          case "Ham":
+              decoratedPizza = new Ham(decoratedPizza);
+              break;
+          case "Green Pepper":
+              decoratedPizza = new Greenpeppers(decoratedPizza);
+              break;
+          case "Sausage":
+              decoratedPizza = new Sausage(decoratedPizza);
+              break;
+          case "Extra Cheese":
+              decoratedPizza = new Extracheese(decoratedPizza);
+              break;
+          case "Bacon":
+              decoratedPizza = new Bacon(decoratedPizza);
+              break;
+          case "Onion":
+              decoratedPizza = new Onions(decoratedPizza);
+              break;
       }
     }
 
