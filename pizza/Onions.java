@@ -3,6 +3,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
 import javax.imageio.ImageIO;
+import java.awt.Graphics;
 
 // 1. Change Class Name
 class Onions extends PizzaIngredient {

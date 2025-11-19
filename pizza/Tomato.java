@@ -3,6 +3,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.Objects;
 import javax.imageio.ImageIO;
+
+
 class Tomato extends PizzaIngredient {
   private final BufferedImage img;
   public Tomato(Pizza pizza) {

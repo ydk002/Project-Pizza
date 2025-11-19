@@ -12,6 +12,7 @@ class PizzaFrame extends JFrame {
   private final List<String> selectedToppings;
   private final JLabel recipeLabel;
   private final JLabel priceLabel;
+  private final List<Pizza> orderHistory = new ArrayList<>();
 
   public PizzaFrame() {
     super("PizzaFrame");
@@ -37,6 +38,7 @@ class PizzaFrame extends JFrame {
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setSize(700, 700);
     setVisible(true);
+
   }
 
   private void createMenu() {
@@ -96,11 +98,17 @@ class PizzaFrame extends JFrame {
     menuBar.add(toppingsMenu);
 
     saveItem.addActionListener(new ActionListener() {
-      @Override
-      public void actionPerformed(ActionEvent e) {
-        savePizza();
-      }
-    });
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            try {
+                savePizza();
+            } catch (PizzaException ex) {
+                  // 2. CATCH THE EXCEPTION (Checklist Item)
+                  // Show a popup with the error message ("You cannot save a pizza...")
+                  JOptionPane.showMessageDialog(PizzaFrame.this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+              }
+          }
+      });
 
     loadItem.addActionListener(new ActionListener() {
       @Override
@@ -138,7 +146,12 @@ class PizzaFrame extends JFrame {
     recipeLabel.setText("Recipe: " + decoratedPizza.getIngredients());
     priceLabel.setText("Price: $" + decoratedPizza.getPrice());
   }
-  private void savePizza() {
+    private void savePizza() throws PizzaException {
+
+      if (selectedToppings.isEmpty()) {
+          throw new PizzaException("You cannot save a pizza with no toppings!");
+      }
+
     JFileChooser fileChooser = new JFileChooser(new File("."));
 
     int result = fileChooser.showSaveDialog(this);
@@ -151,6 +164,8 @@ class PizzaFrame extends JFrame {
           writer.write(topping);
           writer.newLine();
         }
+          orderHistory.add(decoratedPizza);
+          System.out.println("Order history size: " + orderHistory.size());
         JOptionPane.showMessageDialog(this, "Pizza saved successfully!");
       } catch (IOException ex) {
         ex.printStackTrace();
