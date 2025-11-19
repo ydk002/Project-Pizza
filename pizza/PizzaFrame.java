@@ -173,29 +173,38 @@ class PizzaFrame extends JFrame {
     }
   }
 
-  private void loadPizza() {
-    JFileChooser fileChooser = new JFileChooser(new File("."));
+    private void loadPizza() {
+        JFileChooser fileChooser = new JFileChooser(new File("."));
 
-    int result = fileChooser.showOpenDialog(this);
+        int result = fileChooser.showOpenDialog(this);
 
-    if (result == JFileChooser.APPROVE_OPTION) {
-      File file = fileChooser.getSelectedFile();
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File file = fileChooser.getSelectedFile();
 
-      try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
-        selectedToppings.clear();
-        String line;
-        while ((line = reader.readLine()) != null) {
-          selectedToppings.add(line);
+            try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+                selectedToppings.clear();
+                String line;
+                while ((line = reader.readLine()) != null) {
+
+                    //Using .equals()
+                    // This prevents loading blank lines
+                    if (!line.trim().equals("")) {
+                        selectedToppings.add(line);
+                    }
+                }
+
+                decoratePizzaWithToppings();
+                updatePizzaInfo();
+
+                // Using overload method
+                logAction("Pizza loaded from file");
+
+                JOptionPane.showMessageDialog(this, "Pizza loaded successfully!");
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
-
-        decoratePizzaWithToppings();
-        updatePizzaInfo();
-        JOptionPane.showMessageDialog(this, "Pizza loaded successfully!");
-      } catch (IOException ex) {
-        ex.printStackTrace();
-      }
     }
-  }
 
   private void decoratePizzaWithToppings() {
     decoratedPizza = new PizzaBase();
@@ -247,8 +256,18 @@ class PizzaFrame extends JFrame {
     panel.setPizza(decoratedPizza);
     panel.repaint();
   }
+    // Overloaded Method #1
+    private void logAction(String message) {
+        System.out.println("LOG: " + message);
+    }
+
+    // Overloaded Method #2 
+    private void logAction(String message, int value) {
+        System.out.println("LOG: " + message + " | Value: " + value);
+    }
 
   public static void main(String[] args) {
     SwingUtilities.invokeLater(PizzaFrame::new);
   }
 }
+
